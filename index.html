@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reuters | Dispatches, Visual Journalism & Media</title>
+  <meta name="description" content="Editorial presentation featuring literary dispatches, interactive graphics, and wire media access in the Reuters visual standard.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Top Global Wire & Timestamp Bar -->
+  <header class="masthead-container" role="banner">
+    <div class="top-utility-bar">
+      <div class="site-bounds utility-flex">
+        <div class="utility-left">
+          <span class="edition-indicator" id="live-edition">Global Edition</span>
+          <span class="utility-divider" aria-hidden="true">|</span>
+          <time class="utility-timestamp" id="current-timestamp" datetime="2026-10-22">Thursday, October 22, 2026</time>
+        </div>
+        <div class="utility-right">
+          <a href="#media-section" class="utility-link">Media Hub Access</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Reuters Brand Header -->
+    <div class="brand-bar">
+      <div class="site-bounds brand-flex">
+        <div class="logo-group">
+          <a href="#" class="brand-logo" aria-label="Reuters Home">
+            <img src="reuters-logo.svg" alt="Reuters" class="brand-logo-img" width="140" height="36">
+          </a>
+          <span class="brand-subtext">MCPUCMUN</span>
+        </div>
+
+        <div class="brand-actions">
+          <div class="credit-pill">Naman Bhotika and Arnav Malani</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Editorial Navigation -->
+    <nav class="editorial-nav" aria-label="Main Editorial Navigation">
+      <div class="site-bounds">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#poem-section" class="nav-link active">1. Featured Poem</a></li>
+          <li class="nav-item"><a href="#graphic-section" class="nav-link">2. Reuters Graphic</a></li>
+          <li class="nav-item"><a href="#media-section" class="nav-link">3. Media Portal</a></li>
+          <li class="nav-item"><a href="#dispatch-archive" class="nav-link">Dispatches</a></li>
+          <li class="nav-item"><a href="#wire-briefs" class="nav-link">Briefs</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Floating Quick Section Navigator -->
+  <aside class="floating-section-nav" aria-label="Section Quick Jump">
+    <button type="button" class="rail-dot-btn active" data-target="poem-section" aria-label="Jump to Section 1: Featured Poem">
+      <span class="rail-tooltip">1. Featured Poem</span>
+    </button>
+    <button type="button" class="rail-dot-btn" data-target="graphic-section" aria-label="Jump to Section 2: Reuters Graphic">
+      <span class="rail-tooltip">2. Reuters Graphic</span>
+    </button>
+    <button type="button" class="rail-dot-btn" data-target="media-section" aria-label="Jump to Section 3: Media Portal">
+      <span class="rail-tooltip">3. Media Portal</span>
+    </button>
+    <button type="button" class="rail-dot-btn" data-target="wire-briefs" aria-label="Jump to Fast Wire Briefs">
+      <span class="rail-tooltip">Wire Briefs</span>
+    </button>
+  </aside>
+
+  <!-- Main Content Layout -->
+  <main id="main-content" class="site-bounds content-stream" role="main">
+
+    <!-- Section 1: The Poem Feature -->
+    <section id="poem-section" class="editorial-feature-section" aria-labelledby="poem-heading">
+      <div class="section-lead-rule">
+        <span class="section-kicker">Section 1 &mdash; Cultural Dispatch</span>
+      </div>
+
+      <div class="poem-grid">
+        <header class="poem-meta-column">
+          <span class="editorial-badge">Literary Wire</span>
+          <h1 id="poem-heading" class="feature-headline">The Shift of the Meridian</h1>
+          <p class="feature-subhead">A poetic reflection on migratory tides, borderland light, and the quiet resilience of coastal witnesses.</p>
+          
+          <div class="byline-block">
+            <span class="byline-author">By <strong class="author-name">[Poet / Contributor Placeholder]</strong></span>
+            <div class="dateline-row">
+              <span class="dateline">VALPARAÍSO, Chile</span>
+              <time class="pub-date" datetime="2026-10-22">October 22, 2026 &bull; 6 min read</time>
+            </div>
+          </div>
+
+          <aside class="curator-note" aria-label="Context Note">
+            <h2 class="curator-title">Context &amp; Curatorial Note</h2>
+            <p class="curator-text">
+              Commissioned as part of our ongoing seasonal dispatches exploring human geography through verse. This placeholder text reflects stanzas examining change across maritime boundaries.
+            </p>
+            <div class="reading-controls">
+              <button type="button" class="ctrl-btn" id="font-toggle-btn" aria-pressed="false">Increase text size</button>
+              <button type="button" class="ctrl-btn" id="stanza-toggle-btn">Toggle bilingual view</button>
+            </div>
+          </aside>
+        </header>
+
+        <article class="poem-body-column">
+          <div class="poem-wrapper" id="poem-text-target">
+            <div class="poem-stanza">
+              <p class="poem-line">Dawn gathers along the breakwater's jagged edge,</p>
+              <p class="poem-line">Salt-scratched iron and the turning of the buoys,</p>
+              <p class="poem-line">Where trade once measured fortunes by the barrel,</p>
+              <p class="poem-line">Only the tide now returns its silver promissory.</p>
+            </div>
+
+            <div class="poem-stanza">
+              <p class="poem-line">We stood beside the dry-dock under telegraph wires,</p>
+              <p class="poem-line">Listening to the cables humming through the mist,</p>
+              <p class="poem-line">Each syllable a cargo bound for foreign ports,</p>
+              <p class="poem-line">Each silence heavy with names the manifest forgot.</p>
+            </div>
+
+            <div class="poem-stanza">
+              <p class="poem-line">The lantern keeper does not speak of storms to come;</p>
+              <p class="poem-line">He measures the horizon with an inked brass rule,</p>
+              <p class="poem-line">Watching the gulls fold their wings into the grey,</p>
+              <p class="poem-line">As evening settles on the granite coast like coal.</p>
+            </div>
+
+            <div class="poem-stanza">
+              <p class="poem-line">What remains when the ships have cleared the roads?</p>
+              <p class="poem-line">A sudden stillness in the rigging, a spark upon the foam,</p>
+              <p class="poem-line">And words laid out like markers along the shoal,</p>
+              <p class="poem-line">Guiding the vessel of our memory safely home.</p>
+            </div>
+          </div>
+
+          <footer class="poem-annotation">
+            <span class="annotation-lead">Editorial Archive Reference:</span>
+            <span class="annotation-text">Dispatch Ref: #RTR-LIT-2026-1044 &bull; Verified Thomson Reuters Cultural Heritage Section &bull; [Placeholder stanza translations available on wire request]</span>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <!-- Section 2: Reuters Graphic -->
+    <section id="graphic-section" class="editorial-feature-section" aria-labelledby="graphic-heading">
+      <div class="section-lead-rule">
+        <span class="section-kicker">Section 2 &mdash; Reuters Visual Journalism</span>
+      </div>
+
+      <header class="section-header">
+        <h2 id="graphic-heading" class="feature-headline">Global Maritime Flow &amp; Carbon Footprint Analysis</h2>
+        <p class="feature-subhead">Visualizing 24-month trade trajectory changes, route deviations, and energy transit metrics across prime chokepoints.</p>
+        <div class="graphic-meta-row">
+          <span class="meta-tag">Reuters Graphics Department</span>
+          <span class="meta-separator">&bull;</span>
+          <span class="meta-tag">Data Source: Global Maritime Satellite AIS Feed &bull; Updated Live</span>
+        </div>
+      </header>
+
+      <!-- Interactive Graphic Canvas -->
+      <div class="graphic-frame-card">
+        <div class="graphic-toolbar">
+          <div class="toolbar-title-group">
+            <span class="graphic-sub-indicator">Interactive Metric View</span>
+            <span class="graphic-timestamp">Sample Period: Q1 2025 &ndash; Q4 2026</span>
+          </div>
+
+          <div class="toolbar-controls" role="group" aria-label="Metric Filters">
+            <button type="button" class="chart-tab active" data-metric="transit">Vessel Density (TEU)</button>
+            <button type="button" class="chart-tab" data-metric="energy">Bunker Emissions (kt)</button>
+            <button type="button" class="chart-tab" data-metric="delay">Chokepoint Delay (Hrs)</button>
+          </div>
+        </div>
+
+        <figure class="reuters-graphic-container">
+          <div class="chart-stage" id="chart-stage">
+            <!-- Inline SVG chart designed following Reuters Graphic design language -->
+            <svg class="reuters-chart-svg" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Interactive chart showing trade route metrics over time">
+              <!-- Grid background -->
+              <defs>
+                <linearGradient id="reutersGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#FF8000" stop-opacity="0.22" />
+                  <stop offset="100%" stop-color="#FF8000" stop-opacity="0.0" />
+                </linearGradient>
+              </defs>
+
+              <!-- Chart Axes & Gridlines -->
+              <g class="chart-gridlines" stroke="#E5E8ED" stroke-width="1" stroke-dasharray="2,3">
+                <line x1="80" y1="60" x2="850" y2="60" />
+                <line x1="80" y1="130" x2="850" y2="130" />
+                <line x1="80" y1="200" x2="850" y2="200" />
+                <line x1="80" y1="270" x2="850" y2="270" />
+                <line x1="80" y1="340" x2="850" y2="340" />
+              </g>
+
+              <!-- Y-Axis labels -->
+              <g class="y-labels" fill="#6B7280" font-family="'Source Sans 3', sans-serif" font-size="12">
+                <text x="70" y="64" text-anchor="end" id="y-lbl-4">100k</text>
+                <text x="70" y="134" text-anchor="end" id="y-lbl-3">75k</text>
+                <text x="70" y="204" text-anchor="end" id="y-lbl-2">50k</text>
+                <text x="70" y="274" text-anchor="end" id="y-lbl-1">25k</text>
+                <text x="70" y="344" text-anchor="end">0</text>
+              </g>
+
+              <!-- X-Axis labels -->
+              <g class="x-labels" fill="#6B7280" font-family="'Source Sans 3', sans-serif" font-size="12">
+                <text x="120" y="365" text-anchor="middle">Jan '25</text>
+                <text x="230" y="365" text-anchor="middle">May '25</text>
+                <text x="340" y="365" text-anchor="middle">Sep '25</text>
+                <text x="450" y="365" text-anchor="middle">Jan '26</text>
+                <text x="560" y="365" text-anchor="middle">May '26</text>
+                <text x="670" y="365" text-anchor="middle">Sep '26</text>
+                <text x="780" y="365" text-anchor="middle">Oct '26</text>
+              </g>
+
+              <!-- Data Fill Area -->
+              <path id="chart-area" class="chart-area" d="M 120,290 L 230,250 L 340,210 L 450,260 L 560,170 L 670,120 L 780,95 L 780,340 L 120,340 Z" fill="url(#reutersGradient)" />
+
+              <!-- Benchmark comparison line (dashed grey) -->
+              <path id="benchmark-line" class="benchmark-line" d="M 120,310 L 230,295 L 340,270 L 450,250 L 560,240 L 670,225 L 780,210" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-dasharray="4,4" />
+
+              <!-- Primary Trend Line (Signature Reuters Orange) -->
+              <path id="chart-trend-line" class="chart-line" d="M 120,290 L 230,250 L 340,210 L 450,260 L 560,170 L 670,120 L 780,95" fill="none" stroke="#FF8000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+
+              <!-- Interactive Data Points -->
+              <g class="data-points" id="data-points-group">
+                <circle class="interactive-dot" cx="120" cy="290" r="5.5" data-val="18,400" data-label="Jan 2025" tabindex="0" role="button" aria-label="Jan 2025: 18,400 units" />
+                <circle class="interactive-dot" cx="230" cy="250" r="5.5" data-val="32,100" data-label="May 2025" tabindex="0" role="button" aria-label="May 2025: 32,100 units" />
+                <circle class="interactive-dot" cx="340" cy="210" r="5.5" data-val="46,800" data-label="Sep 2025" tabindex="0" role="button" aria-label="Sep 2025: 46,800 units" />
+                <circle class="interactive-dot" cx="450" cy="260" r="5.5" data-val="28,500" data-label="Jan 2026" tabindex="0" role="button" aria-label="Jan 2026: 28,500 units" />
+                <circle class="interactive-dot" cx="560" cy="170" r="5.5" data-val="61,200" data-label="May 2026" tabindex="0" role="button" aria-label="May 2026: 61,200 units" />
+                <circle class="interactive-dot" cx="670" cy="120" r="5.5" data-val="78,900" data-label="Sep 2026" tabindex="0" role="button" aria-label="Sep 2026: 78,900 units" />
+                <circle class="interactive-dot active-dot" cx="780" cy="95" r="7" data-val="89,450" data-label="Oct 2026 (Peak)" tabindex="0" role="button" aria-label="Oct 2026: 89,450 units" />
+              </g>
+
+              <!-- Annotation Box inside Graphic -->
+              <g class="chart-annotation" transform="translate(620, 48)">
+                <rect x="0" y="0" width="168" height="38" rx="2" fill="#121417" />
+                <text x="10" y="16" fill="#FFFFFF" font-family="'Source Sans 3', sans-serif" font-size="11" font-weight="700">RECORD VOLUME +42%</text>
+                <text x="10" y="30" fill="#D1D5DB" font-family="'Source Sans 3', sans-serif" font-size="10">Cape of Good Hope reroutes</text>
+              </g>
+            </svg>
+
+            <!-- Floating Tooltip Element -->
+            <div id="chart-tooltip" class="chart-tooltip" role="tooltip" aria-hidden="true">
+              <span class="tooltip-period" id="tt-period">Oct 2026</span>
+              <span class="tooltip-value" id="tt-value">89,450 TEU</span>
+              <span class="tooltip-detail" id="tt-detail">+14.2% vs previous period</span>
+            </div>
+          </div>
+
+          <figcaption class="graphic-caption">
+            <div class="legend-strip">
+              <div class="legend-item">
+                <span class="legend-color-swatch reuters-orange-bar" aria-hidden="true"></span>
+                <span class="legend-text" id="legend-primary-lbl">Observed Monthly Transit Volume</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-color-swatch dashed-grey-bar" aria-hidden="true"></span>
+                <span class="legend-text">5-Year Historical Baseline Average</span>
+              </div>
+            </div>
+            <p class="source-credit">
+              <strong>Source:</strong> Reuters Visual Analytics System &bull; UNCTAD Division for Technology and Logistics &bull; Graphic: [Placeholder Graphic Desk Team]
+            </p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Section 3: Link to Media Page -->
+    <section id="media-section" class="editorial-feature-section" aria-labelledby="media-heading">
+      <div class="section-lead-rule">
+        <span class="section-kicker">Section 3 &mdash; Reuters Media Services</span>
+      </div>
+
+      <div class="media-banner-card">
+        <div class="media-content-column">
+          <span class="media-portal-tag">Reuters Connect &bull; Global Media Wire</span>
+          <h2 id="media-heading" class="media-title">Direct Access to the Reuters Media &amp; News Wire Portal</h2>
+          <p class="media-description">
+            License high-definition broadcast footage, high-resolution photojournalism dispatches, raw video feeds, and unfiltered news wire copy directly from the world's most trusted independent newsroom.
+          </p>
+
+          <div class="media-specs-grid">
+            <div class="spec-item">
+              <span class="spec-figure">2.4M+</span>
+              <span class="spec-name">Verified Wire Stories</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-figure">15,000+</span>
+              <span class="spec-name">Daily Photo Dispatches</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-figure">140+</span>
+              <span class="spec-name">Global News Bureaus</span>
+            </div>
+          </div>
+
+          <!-- Primary Call to Action link following Reuters design -->
+          <div class="media-action-row">
+            <a href="https://www.reutersagency.com/en/reuters-connect/" target="_blank" rel="noopener noreferrer" class="btn-primary-reuters" id="portal-cta-link">
+              <span>Explore Reuters Media Hub</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14"></path>
+                <path d="M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+            <a href="#wire-briefs" class="btn-secondary-reuters">Browse Latest Wire Feeds</a>
+          </div>
+
+          <p class="media-disclaimer">
+            Access credentials for media organization desks, broadcaster licenses, and API data feeds can be requested directly via Thomson Reuters Agency Portal.
+          </p>
+        </div>
+
+        <aside class="media-preview-column" aria-label="Media Asset Previews">
+          <div class="preview-header">
+            <span class="preview-label">Live Media Feed Previews</span>
+            <span class="feed-indicator">Syncing</span>
+          </div>
+
+          <ul class="preview-asset-list">
+            <li class="asset-item">
+              <div class="asset-thumbnail photo-placeholder">
+                <span class="thumb-badge">Photo</span>
+              </div>
+              <div class="asset-details">
+                <h3 class="asset-title">[Placeholder Wire Photo] Mediterranean shipping lane at twilight</h3>
+                <span class="asset-meta">Reuters Images &bull; High-res 48MP available</span>
+              </div>
+            </li>
+
+            <li class="asset-item">
+              <div class="asset-thumbnail video-placeholder">
+                <span class="thumb-badge">4K Video</span>
+              </div>
+              <div class="asset-details">
+                <h3 class="asset-title">[Placeholder Video Wire] Port automation &amp; container loading</h3>
+                <span class="asset-meta">Reuters Video News &bull; 03:45 broadcast raw</span>
+              </div>
+            </li>
+
+            <li class="asset-item">
+              <div class="asset-thumbnail audio-placeholder">
+                <span class="thumb-badge">Audio</span>
+              </div>
+              <div class="asset-details">
+                <h3 class="asset-title">[Placeholder Audio Dispatch] Field recording: Harbor acoustic survey</h3>
+                <span class="asset-meta">Reuters World Audio &bull; 12:20 WAV master</span>
+              </div>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Supplemental Wire Briefs (Editorial Anchor) -->
+    <section id="wire-briefs" class="supplemental-section" aria-labelledby="briefs-heading">
+      <div class="section-lead-rule">
+        <span class="section-kicker">Reuters Fast Wire &mdash; Latest Editorial Briefs</span>
+      </div>
+      <h2 id="briefs-heading" class="visually-hidden">Latest Editorial Wire Briefs</h2>
+
+      <div class="wire-cards-grid">
+        <article class="wire-card">
+          <span class="wire-time">14:22 UTC</span>
+          <h3 class="wire-headline"><a href="#" class="wire-link">[Placeholder Headline] Global trade corridors see sustained recalibration across transit straits</a></h3>
+          <p class="wire-snippet">Maritime analysts report steady freight adjustment as logistics firms deploy new bunker fuel efficiencies.</p>
+        </article>
+
+        <article class="wire-card">
+          <span class="wire-time">13:58 UTC</span>
+          <h3 class="wire-headline"><a href="#" class="wire-link">[Placeholder Headline] Literary archives reveal unreleased verses from early 20th century maritime poets</a></h3>
+          <p class="wire-snippet">Scholars at the International Seamen’s institute document preserved ledger notes and hand-written stanzas.</p>
+        </article>
+
+        <article class="wire-card">
+          <span class="wire-time">13:15 UTC</span>
+          <h3 class="wire-headline"><a href="#" class="wire-link">[Placeholder Headline] Reuters Media platform expands live satellite telemetry access for broadcast partners</a></h3>
+          <p class="wire-snippet">Subscribers gain immediate raw video feeds and high-density telemetry layers for real-time reporting desks.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Reuters Standard Footer -->
+  <footer class="reuters-footer" role="contentinfo">
+    <div class="site-bounds footer-content">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-logo">REUTERS</span>
+          <p class="footer-tagline">
+            Reuters, the news and media division of Thomson Reuters, is the world’s largest multimedia news provider, reaching billions of people worldwide every day.
+          </p>
+        </div>
+        <div class="footer-columns">
+          <div class="f-col">
+            <h4 class="f-title">Content Sections</h4>
+            <ul>
+              <li><a href="#poem-section">Featured Poem</a></li>
+              <li><a href="#graphic-section">Reuters Graphic</a></li>
+              <li><a href="#media-section">Media Services</a></li>
+              <li><a href="#wire-briefs">Wire Briefs</a></li>
+            </ul>
+          </div>
+          <div class="f-col">
+            <h4 class="f-title">Information &amp; Standards</h4>
+            <ul>
+              <li><a href="#">The Trust Principles</a></li>
+              <li><a href="#">Editorial Handbook</a></li>
+              <li><a href="#">Fact-Checking Policy</a></li>
+              <li><a href="#">Corrections Policy</a></li>
+            </ul>
+          </div>
+          <div class="f-col">
+            <h4 class="f-title">Agency &amp; Commercial</h4>
+            <ul>
+              <li><a href="#">Reuters Connect</a></li>
+              <li><a href="#">Reuters Agency</a></li>
+              <li><a href="#">Brand Attribution Guidelines</a></li>
+              <li><a href="#">Contact Wire Desk</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright-text">
+          &copy; 2026 Thomson Reuters. All rights reserved. Republication or redistribution of Thomson Reuters content, including by framing or similar means, is prohibited without prior written consent.
+        </p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Statement</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Cookie Policy</a>
+          <a href="#">Trust &amp; Accuracy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
