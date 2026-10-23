@@ -178,30 +178,30 @@ function initPoemInteractions() {
       [
         "If the city breaks and turns to dust,",
         "Would you still keep your procedural trust?",
-        "If the clinic falls and the borders sway,",
+        "If the clinic falls and borders sway,",
         "Will you keep the Charter locked away?"
       ],
       [
-        "Under the mural, the delegates sit,",
-        "Trading their clauses, bit by bit.",
-        "Article Two and Article Five,",
+        "Under the mural, delegates sit,",
+        "Trading clauses, bit by bit,",
+        "Article two and Article five,",
         "Drafting a paper where nothing can thrive.",
-        "Forty-two points to avoid a deed,",
+        "Forty two points to avoid a deed,",
         "Feeding the halls of bureaucratic greed."
       ],
       [
         "If peace falls down and burns today,",
         "Tell me would you keep it locked away?",
-        "With a permanent veto, a nod, and a grin,",
-        "Locking the truth and the slaughter in."
+        "With a permanent veto, a nod and a grin,",
+        "Locking the truth and slaughter in."
       ],
       [
         "Washington trades for a legal flaw,",
         "Beijing and Moscow enforce the law.",
-        "Points of Order across the floor,",
+        "Points of order across the floor,",
         "While the sirens wail outside the door.",
         "Resolution dead on a marble tray,",
-        "All of the courage is locked away."
+        "All the courage is locked away."
       ]
     ];
 
