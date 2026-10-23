@@ -176,28 +176,32 @@ function initPoemInteractions() {
     let isBilingual = false;
     const englishStanzas = [
       [
-        "Dawn gathers along the breakwater's jagged edge,",
-        "Salt-scratched iron and the turning of the buoys,",
-        "Where trade once measured fortunes by the barrel,",
-        "Only the tide now returns its silver promissory."
+        "If the city breaks and turns to dust,",
+        "Would you still keep your procedural trust?",
+        "If the clinic falls and the borders sway,",
+        "Will you keep the Charter locked away?"
       ],
       [
-        "We stood beside the dry-dock under telegraph wires,",
-        "Listening to the cables humming through the mist,",
-        "Each syllable a cargo bound for foreign ports,",
-        "Each silence heavy with names the manifest forgot."
+        "Under the mural, the delegates sit,",
+        "Trading their clauses, bit by bit.",
+        "Article Two and Article Five,",
+        "Drafting a paper where nothing can thrive.",
+        "Forty-two points to avoid a deed,",
+        "Feeding the halls of bureaucratic greed."
       ],
       [
-        "The lantern keeper does not speak of storms to come;",
-        "He measures the horizon with an inked brass rule,",
-        "Watching the gulls fold their wings into the grey,",
-        "As evening settles on the granite coast like coal."
+        "If peace falls down and burns today,",
+        "Tell me would you keep it locked away?",
+        "With a permanent veto, a nod, and a grin,",
+        "Locking the truth and the slaughter in."
       ],
       [
-        "What remains when the ships have cleared the roads?",
-        "A sudden stillness in the rigging, a spark upon the foam,",
-        "And words laid out like markers along the shoal,",
-        "Guiding the vessel of our memory safely home."
+        "Washington trades for a legal flaw,",
+        "Beijing and Moscow enforce the law.",
+        "Points of Order across the floor,",
+        "While the sirens wail outside the door.",
+        "Resolution dead on a marble tray,",
+        "All of the courage is locked away."
       ]
     ];
 
@@ -260,9 +264,13 @@ function initGraphicInteractivity() {
   const chartArea = document.getElementById('chart-area');
   const benchmarkLine = document.getElementById('benchmark-line');
   const tooltip = document.getElementById('chart-tooltip');
+  const chartStage = document.getElementById('chart-stage');
   const ttPeriod = document.getElementById('tt-period');
   const ttValue = document.getElementById('tt-value');
   const ttDetail = document.getElementById('tt-detail');
+  const ttPeriodFloat = document.getElementById('tt-period-float');
+  const ttValueFloat = document.getElementById('tt-value-float');
+  const ttDetailFloat = document.getElementById('tt-detail-float');
   const dotsGroup = document.getElementById('data-points-group');
   const legendPrimaryLbl = document.getElementById('legend-primary-lbl');
   const yLbl4 = document.getElementById('y-lbl-4');
@@ -270,64 +278,92 @@ function initGraphicInteractivity() {
   const yLbl2 = document.getElementById('y-lbl-2');
   const yLbl1 = document.getElementById('y-lbl-1');
 
+  const badgeLine1 = document.getElementById('badge-line-1');
+  const badgeLine2 = document.getElementById('badge-line-2');
+
   if (!metricTabs.length || !trendLine || !dotsGroup) return;
 
-  // Dataset configurations matching Reuters Graphic standards
+  // Accurate Dataset configurations matching Reuters Graphic & UNCTAD/EIA standards
   const datasets = {
-    transit: {
-      legend: 'Observed Monthly Transit Volume',
-      yScale: ['100k', '75k', '50k', '25k'],
-      unit: 'TEU',
-      trendPath: 'M 120,290 L 230,250 L 340,210 L 450,260 L 560,170 L 670,120 L 780,95',
-      areaPath: 'M 120,290 L 230,250 L 340,210 L 450,260 L 560,170 L 670,120 L 780,95 L 780,340 L 120,340 Z',
-      benchmarkPath: 'M 120,310 L 230,295 L 340,270 L 450,250 L 560,240 L 670,225 L 780,210',
+    oil_flow: {
+      legend: 'Observed Daily Petroleum Flow via Strait of Hormuz (Million b/d)',
+      yScale: ['25M', '20M', '15M', '10M'],
+      unit: 'Million b/d',
+      trendPath: 'M 120,108 L 230,112 L 340,118 L 450,136 L 560,155 L 670,171 L 780,176',
+      areaPath: 'M 120,108 L 230,112 L 340,118 L 450,136 L 560,155 L 670,171 L 780,176 L 780,340 L 120,340 Z',
+      benchmarkPath: 'M 120,110 L 230,110 L 340,110 L 450,110 L 560,110 L 670,110 L 780,110',
+      badge1: 'HISTORIC DECLINE -29.5%',
+      badge2: '14.6M b/d vs 20.7M b/d baseline',
       points: [
-        { cx: 120, cy: 290, val: '18,400 TEU', period: 'Jan 2025', detail: 'Seasonal baseline start' },
-        { cx: 230, cy: 250, val: '32,100 TEU', period: 'May 2025', detail: '+12.5% trade uptick' },
-        { cx: 340, cy: 210, val: '46,800 TEU', period: 'Sep 2025', detail: 'Pre-holiday stock buildup' },
-        { cx: 450, cy: 260, val: '28,500 TEU', period: 'Jan 2026', detail: 'Weather restriction dip' },
-        { cx: 560, cy: 170, val: '61,200 TEU', period: 'May 2026', detail: 'Cape bypass surge begins' },
-        { cx: 670, cy: 120, val: '78,900 TEU', period: 'Sep 2026', detail: '+31% YoY redirection' },
-        { cx: 780, cy: 95,  val: '89,450 TEU', period: 'Oct 2026', detail: 'Peak throughput recorded' }
+        { cx: 120, cy: 108, val: '20.7M b/d', period: 'Jan 2025', detail: 'Normal operating flow (25% global seaborne oil)' },
+        { cx: 230, cy: 112, val: '20.4M b/d', period: 'May 2025', detail: 'Seasonal maintenance cycle' },
+        { cx: 340, cy: 118, val: '19.8M b/d', period: 'Sep 2025', detail: 'Initial regional alert advisories' },
+        { cx: 450, cy: 136, val: '18.2M b/d', period: 'Jan 2026', detail: 'Escort protocols initiated by western flags' },
+        { cx: 560, cy: 155, val: '16.5M b/d', period: 'May 2026', detail: 'AIS transponder darkening surge (+140%)' },
+        { cx: 670, cy: 171, val: '15.1M b/d', period: 'Sep 2026', detail: 'Major charterers pause unescorted spot runs' },
+        { cx: 780, cy: 176, val: '14.6M b/d', period: 'Oct 2026', detail: 'Historical low: 6.1M b/d displaced or diverted' }
       ]
     },
-    energy: {
-      legend: 'Bunker Fuel Emissions (Kilotonnes CO2e)',
-      yScale: ['400kt', '300kt', '200kt', '100kt'],
-      unit: 'kt CO2',
-      trendPath: 'M 120,300 L 230,285 L 340,240 L 450,210 L 560,150 L 670,110 L 780,75',
-      areaPath: 'M 120,300 L 230,285 L 340,240 L 450,210 L 560,150 L 670,110 L 780,75 L 780,340 L 120,340 Z',
-      benchmarkPath: 'M 120,290 L 230,280 L 340,265 L 450,260 L 560,250 L 670,240 L 780,230',
+    vessels: {
+      legend: 'Daily Commercial Vessel Transits — Active AIS Tracked (Vessels/Day)',
+      yScale: ['150', '112', '75', '37'],
+      unit: 'vessels/day',
+      trendPath: 'M 120,82 L 230,90 L 340,105 L 450,164 L 560,232 L 670,273 L 780,284',
+      areaPath: 'M 120,82 L 230,90 L 340,105 L 450,164 L 560,232 L 670,273 L 780,284 L 780,340 L 120,340 Z',
+      benchmarkPath: 'M 120,82 L 230,82 L 340,82 L 450,82 L 560,82 L 670,82 L 780,82',
+      badge1: 'CRITICAL PLUNGE -78.3%',
+      badge2: '30 transits/day vs 138 peacetime',
       points: [
-        { cx: 120, cy: 300, val: '64 kt', period: 'Jan 2025', detail: 'Direct route baseline' },
-        { cx: 230, cy: 285, val: '82 kt', period: 'May 2025', detail: 'Fleet engine upgrades' },
-        { cx: 340, cy: 240, val: '148 kt', period: 'Sep 2025', detail: 'Extended passage starts' },
-        { cx: 450, cy: 210, val: '190 kt', period: 'Jan 2026', detail: 'Rough weather detour' },
-        { cx: 560, cy: 150, val: '280 kt', period: 'May 2026', detail: '+68% route elongation' },
-        { cx: 670, cy: 110, val: '345 kt', period: 'Sep 2026', detail: 'Sustained southern detour' },
-        { cx: 780, cy: 75,  val: '392 kt', period: 'Oct 2026', detail: 'All-time emissions high' }
+        { cx: 120, cy: 82,  val: '138 /day', period: 'Jan 2025', detail: 'Standard commercial AIS traffic baseline' },
+        { cx: 230, cy: 90,  val: '134 /day', period: 'May 2025', detail: 'Regular container & bulk flow' },
+        { cx: 340, cy: 105, val: '126 /day', period: 'Sep 2025', detail: 'UKMTO security risk advisories issued' },
+        { cx: 450, cy: 164, val: '94 /day',  period: 'Jan 2026', detail: 'Container carriers begin Cape bypass' },
+        { cx: 560, cy: 232, val: '58 /day',  period: 'May 2026', detail: 'Tankers switch off AIS or conduct STS off Fujairah' },
+        { cx: 670, cy: 273, val: '36 /day',  period: 'Sep 2026', detail: 'Widespread unescorted commercial halts' },
+        { cx: 780, cy: 284, val: '30 /day',  period: 'Oct 2026', detail: '78.3% plunge in tracked automatic beacons' }
       ]
     },
-    delay: {
-      legend: 'Average Chokepoint Transit Delay (Hours)',
-      yScale: ['120h', '90h', '60h', '30h'],
-      unit: 'Hours',
-      trendPath: 'M 120,320 L 230,305 L 340,260 L 450,180 L 560,130 L 670,165 L 780,140',
-      areaPath: 'M 120,320 L 230,305 L 340,260 L 450,180 L 560,130 L 670,165 L 780,140 L 780,340 L 120,340 Z',
-      benchmarkPath: 'M 120,315 L 230,310 L 340,305 L 450,300 L 560,295 L 670,290 L 780,285',
+    emissions: {
+      legend: 'Bunker Fuel Emissions from Cape of Good Hope Redirections (kt CO2e)',
+      yScale: ['450kt', '335kt', '225kt', '110kt'],
+      unit: 'kt CO2e',
+      trendPath: 'M 120,300 L 230,298 L 340,270 L 450,217 L 560,162 L 670,121 L 780,94',
+      areaPath: 'M 120,300 L 230,298 L 340,270 L 450,217 L 560,162 L 670,121 L 780,94 L 780,340 L 120,340 Z',
+      benchmarkPath: 'M 120,299 L 230,299 L 340,299 L 450,299 L 560,299 L 670,299 L 780,299',
+      badge1: 'CARBON EMISSION SURGE +517%',
+      badge2: '+4,160t CO2 per VLCC Cape detour',
       points: [
-        { cx: 120, cy: 320, val: '8.4 hrs', period: 'Jan 2025', detail: 'Normal maritime queue' },
-        { cx: 230, cy: 305, val: '14.2 hrs', period: 'May 2025', detail: 'Slight congestion at locks' },
-        { cx: 340, cy: 260, val: '34.5 hrs', period: 'Sep 2025', detail: 'Bunker refueling wait' },
-        { cx: 450, cy: 180, val: '72.1 hrs', period: 'Jan 2026', detail: 'Severe anchorage backlog' },
-        { cx: 560, cy: 130, val: '98.6 hrs', period: 'May 2026', detail: 'Peak channel bottleneck' },
-        { cx: 670, cy: 165, val: '79.2 hrs', period: 'Sep 2026', detail: 'Partial diversion relief' },
-        { cx: 780, cy: 140, val: '92.0 hrs', period: 'Oct 2026', detail: 'Ongoing terminal friction' }
+        { cx: 120, cy: 300, val: '64 kt', period: 'Jan 2025', detail: 'Direct Suez/Hormuz corridor benchmark' },
+        { cx: 230, cy: 298, val: '68 kt', period: 'May 2025', detail: 'Baseline voyage bunker consumption' },
+        { cx: 340, cy: 270, val: '112 kt', period: 'Sep 2025', detail: 'First wave of 4,000 nm southern diversions' },
+        { cx: 450, cy: 217, val: '198 kt', period: 'Jan 2026', detail: 'Cape of Good Hope detour becomes standard' },
+        { cx: 560, cy: 162, val: '286 kt', period: 'May 2026', detail: 'Fleet speeds raised to mitigate schedule slippage' },
+        { cx: 670, cy: 121, val: '352 kt', period: 'Sep 2026', detail: 'Over 65% of Asia-Europe boxships rerouted' },
+        { cx: 780, cy: 94,  val: '395 kt', period: 'Oct 2026', detail: 'All-time maritime carbon surge: +517%' }
+      ]
+    },
+    insurance: {
+      legend: 'Maritime War Risk Hull Insurance Premiums (% of Vessel Hull Value)',
+      yScale: ['1.50%', '1.10%', '0.75%', '0.35%'],
+      unit: '% Hull',
+      trendPath: 'M 120,331 L 230,325 L 340,293 L 450,247 L 560,181 L 670,144 L 780,125',
+      areaPath: 'M 120,331 L 230,325 L 340,293 L 450,247 L 560,181 L 670,144 L 780,125 L 780,340 L 120,340 Z',
+      benchmarkPath: 'M 120,331 L 230,331 L 340,331 L 450,331 L 560,331 L 670,331 L 780,331',
+      badge1: 'INSURANCE SPIKE 23x',
+      badge2: '1.15% (~$1.15M/voyage for VLCC)',
+      points: [
+        { cx: 120, cy: 331, val: '0.05%', period: 'Jan 2025', detail: 'Peacetime baseline rate ($50k/voyage)' },
+        { cx: 230, cy: 325, val: '0.08%', period: 'May 2025', detail: 'Routine Persian Gulf marine underwriting' },
+        { cx: 340, cy: 293, val: '0.25%', period: 'Sep 2025', detail: 'Joint War Committee expands alert boundary' },
+        { cx: 450, cy: 247, val: '0.50%', period: 'Jan 2026', detail: 'Underwriters enforce 7-day breach notices' },
+        { cx: 560, cy: 181, val: '0.85%', period: 'May 2026', detail: 'Capacity withdrawn by several London syndicates' },
+        { cx: 670, cy: 144, val: '1.05%', period: 'Sep 2026', detail: 'Premiums top $1,000,000 per tanker transit' },
+        { cx: 780, cy: 125, val: '1.15%', period: 'Oct 2026', detail: 'Historic peak: 23-fold increase over base' }
       ]
     }
   };
 
-  let currentMetric = 'transit';
+  let currentMetric = 'oil_flow';
 
   function renderMetric(key) {
     const data = datasets[key];
@@ -347,6 +383,10 @@ function initGraphicInteractivity() {
     chartArea.setAttribute('d', data.areaPath);
     benchmarkLine.setAttribute('d', data.benchmarkPath);
 
+    // Update Graphic Badge Callout
+    if (badgeLine1 && data.badge1) badgeLine1.textContent = data.badge1;
+    if (badgeLine2 && data.badge2) badgeLine2.textContent = data.badge2;
+
     // Re-render data points
     dotsGroup.innerHTML = '';
     data.points.forEach((pt, idx) => {
@@ -362,24 +402,89 @@ function initGraphicInteractivity() {
       const showTooltip = () => {
         dotsGroup.querySelectorAll('.interactive-dot').forEach(d => d.classList.remove('active-dot'));
         circle.classList.add('active-dot');
-        ttPeriod.textContent = pt.period;
-        ttValue.textContent = pt.val;
-        ttDetail.textContent = pt.detail;
-        tooltip.style.opacity = '1';
+
+        // 1. Update Live Non-overlapping Inspector Strip
+        if (ttPeriod) ttPeriod.textContent = pt.period;
+        if (ttValue) ttValue.textContent = pt.val;
+        if (ttDetail) ttDetail.textContent = pt.detail;
+
+        // 2. Dynamically position floating tooltip directly relative to hovered point
+        if (tooltip && ttPeriodFloat && ttValueFloat && ttDetailFloat) {
+          ttPeriodFloat.textContent = pt.period;
+          ttValueFloat.textContent = pt.val;
+          ttDetailFloat.textContent = pt.detail;
+
+          // Compute exact percentage inside SVG viewBox (900 x 420)
+          const leftPct = (pt.cx / 900) * 100;
+          const topPct = (pt.cy / 420) * 100;
+
+          tooltip.style.left = `${leftPct}%`;
+          tooltip.style.top = `${topPct}%`;
+
+          // Smart Quadrant Offsets:
+          // If point is on right edge (cx > 650), flip tooltip to the left of the point
+          // If point is near top (cy < 140), push tooltip below point to avoid clipping
+          if (pt.cx > 650) {
+            tooltip.style.transform = pt.cy < 140
+              ? 'translate(calc(-100% - 16px), 12px)'
+              : 'translate(calc(-100% - 16px), calc(-100% - 12px))';
+          } else if (pt.cx < 250) {
+            tooltip.style.transform = pt.cy < 140
+              ? 'translate(16px, 12px)'
+              : 'translate(16px, calc(-100% - 12px))';
+          } else {
+            tooltip.style.transform = pt.cy < 140
+              ? 'translate(-50%, 18px)'
+              : 'translate(-50%, calc(-100% - 18px))';
+          }
+
+          tooltip.classList.add('active-tooltip');
+          tooltip.setAttribute('aria-hidden', 'false');
+        }
+      };
+
+      const hideTooltip = () => {
+        if (tooltip) {
+          tooltip.classList.remove('active-tooltip');
+          tooltip.setAttribute('aria-hidden', 'true');
+        }
       };
 
       circle.addEventListener('mouseenter', showTooltip);
       circle.addEventListener('focus', showTooltip);
+      circle.addEventListener('mouseleave', hideTooltip);
+      circle.addEventListener('blur', hideTooltip);
       circle.addEventListener('click', showTooltip);
 
       dotsGroup.appendChild(circle);
     });
 
-    // Default to showing latest peak point
+    // Default to showing latest peak point in Inspector Strip
     const lastPoint = data.points[data.points.length - 1];
-    ttPeriod.textContent = lastPoint.period;
-    ttValue.textContent = lastPoint.val;
-    ttDetail.textContent = lastPoint.detail;
+    if (ttPeriod) ttPeriod.textContent = lastPoint.period;
+    if (ttValue) ttValue.textContent = lastPoint.val;
+    if (ttDetail) ttDetail.textContent = lastPoint.detail;
+  }
+
+  if (chartStage) {
+    chartStage.addEventListener('mouseleave', () => {
+      if (tooltip) {
+        tooltip.classList.remove('active-tooltip');
+        tooltip.setAttribute('aria-hidden', 'true');
+      }
+      // Reset active dot to latest point
+      const curData = datasets[currentMetric];
+      if (curData) {
+        const dots = dotsGroup.querySelectorAll('.interactive-dot');
+        dots.forEach((d, i) => {
+          d.classList.toggle('active-dot', i === dots.length - 1);
+        });
+        const lastPt = curData.points[curData.points.length - 1];
+        if (ttPeriod) ttPeriod.textContent = lastPt.period;
+        if (ttValue) ttValue.textContent = lastPt.val;
+        if (ttDetail) ttDetail.textContent = lastPt.detail;
+      }
+    });
   }
 
   metricTabs.forEach((tab) => {
